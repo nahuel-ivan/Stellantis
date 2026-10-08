@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portal de Proyectos</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    #1b3550 0%,
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #07111f,
+                    #0d1b2a,
+                    #14283d
+                );
+
+            color: white;
+
+            display: flex;
+            flex-direction: column;
+
+        }
+
+
+        /* =========================
+           ENCABEZADO
+        ========================= */
+
+        header {
+
+            width: 100%;
+
+            padding: 25px 50px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            background:
+                rgba(0,0,0,0.15);
+
+            backdrop-filter: blur(10px);
+
+        }
+
+
+        .logo-area {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+        }
+
+
+        /* LOGO STELLANTIS */
+
+        .stellantis-logo {
+
+            width: 58px;
+
+            height: 58px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background: rgba(255,255,255,0.06);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.10);
+
+        }
+
+
+        .stellantis-logo svg {
+
+            width: 43px;
+
+            height: 43px;
+
+        }
+
+
+        .titulo-header h1 {
+
+            font-size: 24px;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .titulo-header p {
+
+            color: #aebdcc;
+
+            font-size: 13px;
+
+            margin-top: 4px;
+
+        }
+
+
+        .estado {
+
+            font-size: 13px;
+
+            color: #b9c7d5;
+
+        }
+
+
+        .estado span {
+
+            display: inline-block;
+
+            width: 9px;
+
+            height: 9px;
+
+            background: #31d158;
+
+            border-radius: 50%;
+
+            margin-right: 7px;
+
+            box-shadow:
+                0 0 10px
+                #31d158;
+
+        }
+
+
+        /* =========================
+           CONTENIDO
+        ========================= */
+
+        main {
+
+            width: 100%;
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 55px 30px 40px;
+
+        }
+
+
+        .bienvenida {
+
+            text-align: center;
+
+            margin-bottom: 45px;
+
+        }
+
+
+        .bienvenida h2 {
+
+            font-size: 38px;
+
+            margin-bottom: 12px;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        .bienvenida p {
+
+            color: #aebdcc;
+
+            font-size: 16px;
+
+        }
+
+
+        /* =========================
+           TARJETAS
+        ========================= */
+
+        .proyectos {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+
+        }
+
+
+        .card {
+
+            position: relative;
+
+            overflow: hidden;
+
+            min-height: 310px;
+
+            padding: 30px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,255,255,0.07);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            backdrop-filter: blur(12px);
+
+            display: flex;
+
+            flex-direction: column;
+
+            transition:
+                all 0.3s ease;
+
+        }
+
+
+        .card:hover {
+
+            transform:
+                translateY(-8px);
+
+            background:
+                rgba(255,255,255,0.11);
+
+            border-color:
+                rgba(255,255,255,0.25);
+
+            box-shadow:
+                0 20px 45px
+                rgba(0,0,0,0.30);
+
+        }
+
+
+        .card::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 150px;
+
+            height: 150px;
+
+            border-radius: 50%;
+
+            top: -70px;
+
+            right: -70px;
+
+            background:
+                rgba(255,255,255,0.05);
+
+        }
+
+
+        .icono {
+
+            width: 65px;
+
+            height: 65px;
+
+            border-radius: 16px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 30px;
+
+            margin-bottom: 25px;
+
+            background:
+                rgba(255,255,255,0.10);
+
+        }
+
+
+        .card h3 {
+
+            font-size: 23px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .card p {
+
+            color: #b8c5d2;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            flex: 1;
+
+        }
+
+
+        .boton {
+
+            margin-top: 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            width: 100%;
+
+            padding: 13px;
+
+            border-radius: 10px;
+
+            background:
+                rgba(255,255,255,0.10);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.15);
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            font-size: 14px;
+
+            transition:
+                all 0.25s ease;
+
+        }
+
+
+        .boton:hover {
+
+            background: white;
+
+            color: #101820;
+
+        }
+
+
+        .flecha {
+
+            margin-left: 8px;
+
+            transition:
+                transform 0.2s ease;
+
+        }
+
+
+        .boton:hover .flecha {
+
+            transform:
+                translateX(5px);
+
+        }
+
+
+        /* COLORES DE CADA PROYECTO */
+
+        .richero .icono {
+
+            background:
+                rgba(50,150,255,0.15);
+
+        }
+
+
+        .reposicion .icono {
+
+            background:
+                rgba(255,190,50,0.15);
+
+        }
+
+
+        .recordatorio .icono {
+
+            background:
+                rgba(80,210,130,0.15);
+
+        }
+
+
+        /* =========================
+           PIE
+        ========================= */
+
+        footer {
+
+            text-align: center;
+
+            padding: 18px 20px 22px;
+
+            color: #718294;
+
+            font-size: 12px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.08);
+
+        }
+
+
+        /* FIRMA */
+
+        .creadores {
+
+            margin-top: 8px;
+
+            font-size: 10px;
+
+            letter-spacing: 1.2px;
+
+            color:
+                rgba(255,255,255,0.30);
+
+            transition:
+                color 0.3s ease;
+
+        }
+
+
+        .creadores:hover {
+
+            color:
+                rgba(255,255,255,0.60);
+
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .proyectos {
+
+                grid-template-columns: 1fr;
+
+                max-width: 500px;
+
+                margin: auto;
+
+            }
+
+
+            header {
+
+                padding: 20px 25px;
+
+            }
+
+
+            .estado {
+
+                display: none;
+
+            }
+
+
+            .bienvenida h2 {
+
+                font-size: 30px;
+
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            main {
+
+                padding:
+                    40px 20px 30px;
+
+            }
+
+
+            header {
+
+                padding:
+                    18px 20px;
+
+            }
+
+
+            .titulo-header h1 {
+
+                font-size: 19px;
+
+            }
+
+
+            .titulo-header p {
+
+                font-size: 11px;
+
+            }
+
+
+            .stellantis-logo {
+
+                width: 48px;
+
+                height: 48px;
+
+            }
+
+
+            .stellantis-logo svg {
+
+                width: 36px;
+
+                height: 36px;
+
+            }
+
+
+            .bienvenida {
+
+                margin-bottom: 30px;
+
+            }
+
+
+            .bienvenida h2 {
+
+                font-size: 27px;
+
+            }
+
+
+            .bienvenida p {
+
+                font-size: 14px;
+
+            }
+
+
+            .card {
+
+                min-height: 280px;
+
+                padding: 25px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         ENCABEZADO
+    ========================= -->
+
+    <header>
+
+
+        <div class="logo-area">
+
+
+            <!-- LOGO STELLANTIS -->
+
+            <div class="stellantis-logo">
+
+                <svg
+                    viewBox="0 0 100 100"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-label="Stellantis">
+
+                    <g
+                        fill="none"
+                        stroke="white"
+                        stroke-width="6"
+                        stroke-linecap="round">
+
+                        <ellipse
+                            cx="50"
+                            cy="50"
+                            rx="35"
+                            ry="35"
+                            stroke-width="4"
+                            opacity="0.95">
+                        </ellipse>
+
+                        <path
+                            d="M25 35
+                               C37 47,
+                               63 47,
+                               75 35">
+                        </path>
+
+                        <path
+                            d="M25 65
+                               C37 53,
+                               63 53,
+                               75 65">
+                        </path>
+
+                        <path
+                            d="M35 25
+                               C47 37,
+                               47 63,
+                               35 75">
+                        </path>
+
+                        <path
+                            d="M65 25
+                               C53 37,
+                               53 63,
+                               65 75">
+                        </path>
+
+                    </g>
+
+                </svg>
+
+            </div>
+
+
+            <div class="titulo-header">
+
+                <h1>
+                    Portal de Proyectos
+                </h1>
+
+                <p>
+                    Sistemas y herramientas
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="estado">
+
+            <span></span>
+
+            Sistemas disponibles
+
+        </div>
+
+
+    </header>
+
+
+
+    <!-- =========================
+         CONTENIDO
+    ========================= -->
+
+    <main>
+
+
+        <div class="bienvenida">
+
+            <h2>
+                Stellantis
+            </h2>
+
+            <p>
+                Seleccioná el sistema al que querés ingresar
+            </p>
+
+        </div>
+
+
+
+        <div class="proyectos">
+
+
+            <!-- =====================
+                 RICHERO
+            ====================== -->
+
+            <div class="card richero">
+
+
+                <div class="icono">
+                    📦
+                </div>
+
+
+                <h3>
+                    Richero
+                </h3>
+
+
+                <p>
+
+                    Sistema de gestión y visualización
+                    de pedidos para facilitar el trabajo
+                    y seguimiento de los diseños.
+
+                </p>
+
+
+                <a
+                    href="https://nahuel-ivan.github.io/Pedido_reach/"
+                    class="boton">
+
+                    Ingresar
+
+                    <span class="flecha">
+                        →
+                    </span>
+
+                </a>
+
+
+            </div>
+
+
+
+            <!-- =====================
+                 REPOSICIÓN
+            ====================== -->
+
+            <div class="card reposicion">
+
+
+                <div class="icono">
+                    🔄
+                </div>
+
+
+                <h3>
+                    Reposición
+                </h3>
+
+
+                <p>
+
+                    Sistema para gestionar la reposición
+                    de diseños, controlar el estado del stock
+                    y visualizar las necesidades de reposición.
+
+                </p>
+
+
+                <a
+                    href="https://nahuel-ivan.github.io/reposiciones/"
+                    class="boton">
+
+                    Ingresar
+
+                    <span class="flecha">
+                        →
+                    </span>
+
+                </a>
+
+
+            </div>
+
+
+
+            <!-- =====================
+                 RECORDATORIOS
+            ====================== -->
+
+            <div class="card recordatorio">
+
+
+                <div class="icono">
+                    🔔
+                </div>
+
+
+                <h3>
+                    Recordatorios
+                </h3>
+
+
+                <p>
+
+                    Sistema para crear, consultar y gestionar
+                    recordatorios de manera simple y rápida.
+
+                </p>
+
+
+                <a
+                    href="https://nahuel-ivan.github.io/Recordatorio/"
+                    class="boton">
+
+                    Ingresar
+
+                    <span class="flecha">
+                        →
+                    </span>
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         PIE DE PÁGINA
+    ========================= -->
+
+    <footer>
+
+        Portal de Proyectos · 2026
+
+
+        <div class="creadores">
+
+            Desarrollado por Nahuel & Ignacio
+
+        </div>
+
+
+    </footer>
+
+
+</body>
+
+</html>
