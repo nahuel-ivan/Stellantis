@@ -43,7 +43,7 @@
             gap: 16px;
         }
 
-        /* LOGO DE FLUJO CREADO CON SVG */
+        /* LOGO DE FLUJO */
 
         .logo-flujo {
             width: 55px;
@@ -132,11 +132,11 @@
             line-height: 1.7;
         }
 
-        /* TARJETAS DE LOS SISTEMAS */
+        /* TARJETAS */
 
         .proyectos {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 25px;
         }
 
@@ -255,23 +255,7 @@
 
         /* TABLETS */
 
-        @media (max-width: 900px) {
-            main {
-                padding-top: 50px;
-            }
-
-            .proyectos {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .tarjeta:last-child {
-                grid-column: 1 / -1;
-            }
-        }
-
-        /* CELULARES */
-
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
             header {
                 padding: 18px 5%;
             }
@@ -332,9 +316,7 @@
                 gap: 20px;
             }
 
-            .tarjeta,
-            .tarjeta:last-child {
-                grid-column: auto;
+            .tarjeta {
                 min-height: 270px;
                 padding: 25px;
             }
@@ -408,7 +390,7 @@
             </p>
         </section>
 
-        <!-- TARJETAS -->
+        <!-- TARJETAS DE PROYECTOS -->
 
         <section class="proyectos">
 
@@ -476,6 +458,30 @@
                 <a
                     class="boton"
                     href="https://nahuel-ivan.github.io/Recordatorio/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Ingresar
+                    <span class="flecha">→</span>
+                </a>
+            </article>
+
+            <!-- INVENTARIO -->
+
+            <article class="tarjeta">
+                <div class="icono">📋</div>
+
+                <h3>Inventario</h3>
+
+                <p>
+                    Consultá el inventario de piezas, revisá los diseños
+                    disponibles y accedé a la información del stock
+                    desde un único lugar.
+                </p>
+
+                <a
+                    class="boton"
+                    href="https://nahuel-ivan.github.io/Inventario/"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
